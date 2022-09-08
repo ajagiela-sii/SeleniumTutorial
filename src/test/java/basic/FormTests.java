@@ -1,7 +1,7 @@
 package basic;
 
 import base.TestBase;
-import org.example.enums.AllTabs;
+import org.example.enums.URLs;
 import org.example.pages.basic.FormPage;
 import org.junit.jupiter.api.Test;
 
@@ -16,7 +16,7 @@ public class FormTests extends TestBase {
         File file = new File("src/main/resources/file.txt");
         FormPage formPage = new FormPage(driver);
 
-        formPage.navigateToPage(AllTabs.FORM);
+        formPage.navigateToPage(URLs.FORM);
         formPage.setName("Jan");
         formPage.setLastName("Kowalski");
         formPage.setEmail("jankowalski123@email.pl");
@@ -36,7 +36,7 @@ public class FormTests extends TestBase {
     @Test
     void downloadFile() {
         FormPage formPage = new FormPage(driver);
-        formPage.navigateToPage(AllTabs.FORM);
+        formPage.navigateToPage(URLs.FORM);
         formPage.clickDownload();
 
     }

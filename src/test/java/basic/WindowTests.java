@@ -1,7 +1,7 @@
 package basic;
 
 import base.TestBase;
-import org.example.enums.AllTabs;
+import org.example.enums.URLs;
 import org.example.enums.WindowButtons;
 import org.example.pages.basic.TablePage;
 import org.example.pages.basic.WindowPage;
@@ -14,7 +14,7 @@ public class WindowTests extends TestBase{
     @Test
     void shouldClickAllButtons() {
         WindowPage windowPage = new WindowPage(driver);
-        windowPage.navigateToPage(AllTabs.WINDOWTABS);
+        windowPage.navigateToPage(URLs.WINDOWTABS);
         windowPage.setOriginalWindow();
         windowPage.clickButton(WindowButtons.BROWSER_WINDOW);
         windowPage.switchToNewWindow();

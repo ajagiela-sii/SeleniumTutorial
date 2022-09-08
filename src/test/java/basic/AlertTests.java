@@ -1,7 +1,7 @@
 package basic;
 
 import base.TestBase;
-import org.example.enums.AllTabs;
+import org.example.enums.URLs;
 import org.example.enums.AlertButtons;
 import org.example.pages.basic.AlertPage;
 import org.junit.jupiter.api.Test;
@@ -17,7 +17,7 @@ public class AlertTests extends TestBase {
     void shouldAcceptSimpleAlert() {
         AlertPage alertPage = new AlertPage(driver);
 
-        alertPage.navigateToPage(AllTabs.ALERTS);
+        alertPage.navigateToPage(URLs.ALERTS);
         alertPage.clickButton(AlertButtons.SIMPLE);
         alertPage.acceptAlert();
 
@@ -29,7 +29,7 @@ public class AlertTests extends TestBase {
     void shouldSendTextToPromptAlertAndAccept(String name) {
         AlertPage alertPage = new AlertPage(driver);
 
-        alertPage.navigateToPage(AllTabs.ALERTS);
+        alertPage.navigateToPage(URLs.ALERTS);
         alertPage.clickButton(AlertButtons.PROMPT);
         alertPage.sendTextToAlert(name);
         alertPage.acceptAlert();
@@ -41,7 +41,7 @@ public class AlertTests extends TestBase {
     public void shouldAcceptAndCancelAlertBox() {
         AlertPage alertPage = new AlertPage(driver);
 
-        alertPage.navigateToPage(AllTabs.ALERTS);
+        alertPage.navigateToPage(URLs.ALERTS);
         alertPage.clickButton(AlertButtons.CONFIRM);
         alertPage.acceptAlert();
         assertThat(alertPage.getButtonLabel(AlertButtons.CONFIRM)).isEqualTo("You pressed OK!");
@@ -55,9 +55,9 @@ public class AlertTests extends TestBase {
     public void shouldAcceptDelayedAlert() {
         AlertPage alertPage= new AlertPage(driver);
 
-        alertPage.navigateToPage(AllTabs.ALERTS);
+        alertPage.navigateToPage(URLs.ALERTS);
         alertPage.clickButton(AlertButtons.DELAYED);
-        alertPage.waitForAlert(5);
+        alertPage.waitForAlert();
         alertPage.acceptAlert();
 
         assertThat(alertPage.getButtonLabel(AlertButtons.DELAYED)).isEqualTo("OK button pressed");

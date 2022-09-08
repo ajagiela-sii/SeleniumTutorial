@@ -18,12 +18,12 @@ public class AutocompletePage extends PageBase {
         super(driver);
     }
 
-    public String selectRandomAutocompleteOption(String textToInput){
+    public String selectRandomAutocompleteOption(String textToInput) {
         searchField.sendKeys(textToInput);
         for (WebElement autocompleteOption : autocompleteOptions) {
             System.out.println(autocompleteOption.getText());
         }
-        WebElement chosenOption =  (WebElement) getRandomObject(autocompleteOptions);
+        WebElement chosenOption = getRandomObject(autocompleteOptions);
         chosenOption.click();
         return chosenOption.getText();
     }

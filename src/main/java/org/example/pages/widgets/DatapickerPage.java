@@ -1,12 +1,12 @@
 package org.example.pages.widgets;
 
+import org.apache.commons.lang3.ArrayUtils;
 import org.example.base.PageBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import java.time.Month;
-import java.time.MonthDay;
 import java.time.format.TextStyle;
 import java.util.Locale;
 
@@ -31,7 +31,7 @@ public class DatapickerPage extends PageBase {
 //            day = day.substring(1);
 //        }
         datepicker.click();
-        waitForVisibilityOfElement(10, datepickerBlock);
+        waitToBeVisible(datepickerBlock);
         String actualMonthYearValue = actualMonthYear.getText();
 
         String actualMonth = getMonthYear(actualMonthYearValue)[0].toLowerCase();
@@ -65,9 +65,11 @@ public class DatapickerPage extends PageBase {
     }
 
     private int monthToNumber(String month){
+          String[] months = new String[]{"january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november"};
 
+          return ArrayUtils.indexOf(months, month.toLowerCase());
 
-        switch (month.toLowerCase()){
+/*        switch (month.toLowerCase()){
             case "january":
                 return 0;
             case "february":
@@ -94,10 +96,9 @@ public class DatapickerPage extends PageBase {
                 return 11;
             default:
                 return -1;
-        }
+        }*/
     }
     private String monthToText(int integerMonth) {
-       // System.out.println(Month.valueOf("january"));
         return Month.of(integerMonth).getDisplayName(TextStyle.FULL_STANDALONE, Locale.US);
     }
 }

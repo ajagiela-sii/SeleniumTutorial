@@ -1,14 +1,11 @@
 package org.example.pages.widgets;
 
 import org.example.base.PageBase;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import java.time.Duration;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class AccordionPage extends PageBase {
 
@@ -47,13 +44,17 @@ public class AccordionPage extends PageBase {
 
     @FindBy(css = "#ui-id-8 > *")
     private List<WebElement> section4Children;
+    @FindBy(className = "ui-accordion-header")
+    private List<WebElement> sectionHeaders;
+    @FindBy(className = "ui-accordion-content")
+    private List<WebElement> sectionContents;
+
 
     public AccordionPage(WebDriver driver) {
         super(driver);
     }
 
-    public String getTextInSection(int sectionNumber) {
-        StringBuilder textToReturning = new StringBuilder("");
+    public void printTextInSection(int sectionNumber) {
         switch (sectionNumber) {
             case 1 -> {
                 if (!section1Field.isDisplayed()) {
@@ -61,8 +62,7 @@ public class AccordionPage extends PageBase {
                     section1.click();
                 }
                 for (WebElement section1Child : section1Children) {
-                    textToReturning.append(section1Child.getText());
-                    textToReturning.append("\n");
+                    System.out.println(section1Child.getText());
                 }
             }
             case 2 -> {
@@ -71,8 +71,7 @@ public class AccordionPage extends PageBase {
                     section2.click();
                 }
                 for (WebElement section2Child : section2Children) {
-                    textToReturning.append(section2Child.getText());
-                    textToReturning.append("\n");
+                    System.out.println(section2Child.getText());
                 }
             }
             case 3 -> {
@@ -81,8 +80,7 @@ public class AccordionPage extends PageBase {
                     section3.click();
                 }
                 for (WebElement section3Child : section3Children) {
-                    textToReturning.append(section3Child.getText());
-                    textToReturning.append("\n");
+                    System.out.println(section3Child.getText());
                 }
             }
             case 4 -> {
@@ -91,25 +89,8 @@ public class AccordionPage extends PageBase {
                     section4.click();
                 }
                 for (WebElement section4Child : section4Children) {
-                    textToReturning.append(section4Child.getText());
-                    textToReturning.append("\n");
+                    System.out.println(section4Child.getText());
                 }
-                return textToReturning.toString();
-            }
-
-        }
-        //System.out.println(textToReturning);
-        return textToReturning.toString();
-    }
-
-    public void printAllSections() {
-        for(int i = 1; i < 8; i += 2) {
-            driver.findElement(By.cssSelector("#ui-id-" + i)).click();
-            driver.findElement(By.cssSelector("#ui-id-" + i)).click();
-            int sectionId = i+1;
-            List<WebElement> allChildInSection = driver.findElements(By.cssSelector("#ui-id-" + sectionId + " > *"));
-            for (WebElement oneChildInSection : allChildInSection) {
-                System.out.println(oneChildInSection.getText());
             }
         }
     }

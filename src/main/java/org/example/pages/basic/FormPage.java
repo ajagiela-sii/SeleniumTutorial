@@ -69,7 +69,7 @@ public class FormPage extends PageBase {
     }
 
     public void setGender() {
-        ((WebElement) getRandomObject(GenderOptions)).click();
+        (getRandomObject(GenderOptions)).click();
     }
 
     public void setAge(int age) {
@@ -77,15 +77,15 @@ public class FormPage extends PageBase {
     }
 
     public void setExperience() {
-        ((WebElement) getRandomObject(yearOfExperienceOptions)).click();
+        (getRandomObject(yearOfExperienceOptions)).click();
     }
 
-    public void setContinent(){
+    public void setContinent() {
         Select continents = new Select(continentOptions);
         continents.selectByIndex(getRandomInt(1, continents.getOptions().size()));
     }
 
-    public void setContinent(String continent){
+    public void setContinent(String continent) {
         new Select(continentOptions).selectByValue(continent);
     }
 
@@ -98,7 +98,7 @@ public class FormPage extends PageBase {
         }
     }
 
-    public void setSeleniumCommand(String command){
+    public void setSeleniumCommand(String command) {
         new Select(seleniumCommandsOptions).selectByValue(command);
 
     }
@@ -107,11 +107,11 @@ public class FormPage extends PageBase {
         fileInput.sendKeys(file.getAbsolutePath());
     }
 
-    public void clickSignIn(){
+    public void clickSignIn() {
         signInButton.click();
     }
 
-    public String getValidationMessage(){
+    public String getValidationMessage() {
         return validationMessage.getText();
     }
 
