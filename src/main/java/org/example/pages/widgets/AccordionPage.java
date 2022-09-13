@@ -43,37 +43,33 @@ public class AccordionPage extends PageBase {
             case 1 -> {
                 if (!section1Field.isDisplayed()) {
                     section1.click();
-                    section1.click();
                 }
                 for (WebElement section1Child : section1Children) {
-                    System.out.println(section1Child.getText());
+                    System.out.println(section1Child.getAttribute("textContent"));
                 }
             }
             case 2 -> {
                 if (!section2Field.isDisplayed()) {
                     section2.click();
-                    section2.click();
                 }
                 for (WebElement section2Child : section2Children) {
-                    System.out.println(section2Child.getText());
+                    System.out.println(section2Child.getAttribute("textContent"));
                 }
             }
             case 3 -> {
                 if (!section3Field.isDisplayed()) {
                     section3.click();
-                    section3.click();
                 }
                 for (WebElement section3Child : section3Children) {
-                    System.out.println(section3Child.getText());
+                    System.out.println(section3Child.getAttribute("textContent"));
                 }
             }
             case 4 -> {
                 if (!section4Field.isDisplayed()) {
                     section4.click();
-                    section4.click();
                 }
                 for (WebElement section4Child : section4Children) {
-                    System.out.println(section4Child.getText());
+                    System.out.println(section4Child.getAttribute("textContent"));
                 }
             }
         }
