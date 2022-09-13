@@ -4,12 +4,19 @@ import org.example.base.PageBase;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.Wait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
+import java.time.Duration;
 import java.util.List;
+import java.util.Objects;
+
+import static java.util.concurrent.TimeUnit.SECONDS;
 
 public class FormPage extends PageBase {
 
@@ -104,8 +111,10 @@ public class FormPage extends PageBase {
         return validationMessage.getText();
     }
 
-    public void downloadFile() {
-
+    public void downloadFile() throws InterruptedException {
         downloadButton.click();
+        //To refactoring
+        Thread.sleep(5000);
     }
+
 }

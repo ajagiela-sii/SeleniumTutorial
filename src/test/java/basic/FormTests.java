@@ -6,6 +6,7 @@ import org.example.pages.basic.FormPage;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
+import java.util.Objects;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -36,9 +37,14 @@ public class FormTests extends TestBase {
     @Test
     void downloadFile() throws InterruptedException {
         FormPage formPage = new FormPage(driver);
+
         formPage.navigateToPage(URLs.FORM);
+        File file = new File("C:\\work\\downloads");
+        int numFilesInDirectory = Objects.requireNonNull(file.listFiles()).length;
         formPage.downloadFile();
-        Thread.sleep(10000);
+
+        assertThat(file.listFiles().length).isEqualTo(numFilesInDirectory + 1);
+
 
     }
 }
