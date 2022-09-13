@@ -1,7 +1,6 @@
 package org.example.pages.basic;
 
 import org.example.base.PageBase;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -10,7 +9,6 @@ import org.openqa.selenium.support.ui.Select;
 import java.util.List;
 
 public class IframePage extends PageBase {
-
 
     @FindBy(name="iframe1")
     private WebElement iframe1;
@@ -28,7 +26,6 @@ public class IframePage extends PageBase {
     private WebElement continentOptions;
     @FindBy(name = "gridRadios")
     List<WebElement> yearOfExperienceOptions;
-
 
     public IframePage(WebDriver driver) {
         super(driver);
@@ -50,5 +47,4 @@ public class IframePage extends PageBase {
         yearOfExperienceOptions.get(getRandomInt(1,yearOfExperienceOptions.size())).click();
         driver.switchTo().defaultContent();
     }
-
 }

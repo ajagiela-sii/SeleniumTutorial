@@ -1,10 +1,8 @@
 package org.example.base;
 
-import org.example.enums.Menu;
+import org.apache.commons.io.FileUtils;
 import org.example.enums.URLs;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -12,6 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.File;
 import java.time.Duration;
 import java.util.List;
 import java.util.Random;
@@ -36,24 +35,18 @@ public class PageBase {
     public void navigateToPage(URLs tab) {
         driver.get(tab.toString());
     }
-
     public void sendTextToAlert(String text) {
         driver.switchTo().alert().sendKeys(text);
     }
-
     public void acceptAlert() {
         driver.switchTo().alert().accept();
     }
-
     public void cancelAlert() {
         driver.switchTo().alert().dismiss();
     }
-
-
     public static int getRandomInt(int bound) {
         return new Random().nextInt(bound);
     }
-
     public static int getRandomInt(int origin, int bound) {
         return new Random().nextInt(origin, bound);
     }
@@ -100,9 +93,47 @@ public class PageBase {
     public void waitToBeClickable(WebElement webElement) {
         wait.until(ExpectedConditions.elementToBeClickable(webElement));
     }
+    public int getInnerWindowWidth() {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        return Integer.parseInt(js.executeScript("return window.innerWidth;").toString());
+    }
+
+    public int getInnerWindowHeight() {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        return Integer.parseInt(js.executeScript("return window.innerHeight;").toString());
+    }
 
     public void moveMouseToElement(WebElement webElement) {
         actions.moveToElement(webElement).perform();
     }
 
+    public static void takeSnapShot(WebDriver webdriver,String fileWithPath) throws Exception{
+
+        TakesScreenshot scrShot =((TakesScreenshot)webdriver);
+
+        //Call getScreenshotAs method to create image file
+        File SrcFile=scrShot.getScreenshotAs(OutputType.FILE);
+
+        //Move image file to new destination
+        File DestFile=new File(fileWithPath);
+
+        //Copy file at destination
+        FileUtils.copyFile(SrcFile, DestFile);
+    }
+
+    public boolean isDisplayed(WebElement webElement) {
+        try {
+            webElement.isDisplayed();
+            return true;
+        } catch (NoSuchElementException e) {
+            return false;
+        }
+    }
+
+    public enum Menu {
+        BASIC,
+        INTERACTIONS,
+        WIDGETS,
+        OTHERS,
+    }
 }

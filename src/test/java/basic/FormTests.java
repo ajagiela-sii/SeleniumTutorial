@@ -20,11 +20,11 @@ public class FormTests extends TestBase {
         formPage.setName("Jan");
         formPage.setLastName("Kowalski");
         formPage.setEmail("jankowalski123@email.pl");
-        formPage.setGender();
+        formPage.setRndGender();
         formPage.setAge(38);
-        formPage.setExperience();
+        formPage.setRndExperience();
         formPage.setProfession("Automation Tester");
-        formPage.setContinent();
+        formPage.setRndContinent();
         formPage.setSeleniumCommand("switch-commands");
         formPage.setSeleniumCommand("wait-commands");
         formPage.addFile(file);
@@ -34,10 +34,11 @@ public class FormTests extends TestBase {
     }
 
     @Test
-    void downloadFile() {
+    void downloadFile() throws InterruptedException {
         FormPage formPage = new FormPage(driver);
         formPage.navigateToPage(URLs.FORM);
-        formPage.clickDownload();
+        formPage.downloadFile();
+        Thread.sleep(10000);
 
     }
 }

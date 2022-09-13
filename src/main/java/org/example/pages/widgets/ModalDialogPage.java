@@ -12,7 +12,6 @@ public class ModalDialogPage extends PageBase {
 
     @FindBy(id = "create-user")
     private WebElement createUserBtn;
-
     @FindBy(id = "name")
     private WebElement nameInput;
     @FindBy(id = "email")
@@ -21,7 +20,6 @@ public class ModalDialogPage extends PageBase {
     private WebElement passwordInput;
     @FindBy(xpath = "//*[.=\"Create an account\"]")
     private WebElement createAccountBtn;
-
     @FindBy(css = "tbody tr:last-child")
     private WebElement lastCreatedUser;
 

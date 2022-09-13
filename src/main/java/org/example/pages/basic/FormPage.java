@@ -16,39 +16,28 @@ public class FormPage extends PageBase {
     private static Logger logger = LoggerFactory.getLogger(FormPage.class);
     @FindBy(id = "inputFirstName3")
     private WebElement firstName;
-
     @FindBy(id = "inputLastName3")
     private WebElement lastName;
-
     @FindBy(id = "inputEmail3")
     private WebElement email;
-
     @FindBy(className = "btn-primary")
     private WebElement signInButton;
     @FindBy(id = "validator-message")
     private WebElement validationMessage;
-
     @FindBy(name = "gridRadiosSex")
     private List<WebElement> GenderOptions;
-
     @FindBy(id = "inputAge3")
     private WebElement age;
-
     @FindBy(name = "gridRadiosExperience")
     private List<WebElement> yearOfExperienceOptions;
-
     @FindBy(className = "checkbox-profession")
     private List<WebElement> professionOptions;
-
     @FindBy(id = "selectContinents")
     private WebElement continentOptions;
-
     @FindBy(id = "selectSeleniumCommands")
     private WebElement seleniumCommandsOptions;
-
     @FindBy(id = "chooseFile")
     private WebElement fileInput;
-
     @FindBy(className = "btn-secondary")
     private WebElement downloadButton;
 
@@ -68,7 +57,7 @@ public class FormPage extends PageBase {
         this.email.sendKeys(email);
     }
 
-    public void setGender() {
+    public void setRndGender() {
         (getRandomObject(GenderOptions)).click();
     }
 
@@ -76,16 +65,16 @@ public class FormPage extends PageBase {
         this.age.sendKeys(String.valueOf(age));
     }
 
-    public void setExperience() {
+    public void setRndExperience() {
         (getRandomObject(yearOfExperienceOptions)).click();
     }
 
-    public void setContinent() {
+    public void setRndContinent() {
         Select continents = new Select(continentOptions);
         continents.selectByIndex(getRandomInt(1, continents.getOptions().size()));
     }
 
-    public void setContinent(String continent) {
+    public void setRndContinent(String continent) {
         new Select(continentOptions).selectByValue(continent);
     }
 
@@ -115,8 +104,8 @@ public class FormPage extends PageBase {
         return validationMessage.getText();
     }
 
-    public void clickDownload() {
+    public void downloadFile() {
+
         downloadButton.click();
     }
-
 }

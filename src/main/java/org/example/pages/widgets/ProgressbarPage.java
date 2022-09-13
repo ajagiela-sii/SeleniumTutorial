@@ -12,7 +12,6 @@ public class ProgressbarPage extends PageBase {
 
     @FindBy(className = "ui-progressbar-complete")
     private WebElement progressbarComplete;
-
     @FindBy(className = "progress-label")
     private WebElement progressbarLabel;
 

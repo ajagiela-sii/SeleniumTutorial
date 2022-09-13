@@ -1,8 +1,8 @@
 package basic;
 
 import base.TestBase;
+import org.example.base.PageBase;
 import org.example.enums.URLs;
-import org.example.enums.Menu;
 import org.example.pages.basic.IframePage;
 import org.junit.jupiter.api.Test;
 
@@ -17,7 +17,7 @@ public class IframeTests extends TestBase {
 
         iframePage.fillShortForm("Jan", "Nowak");
         iframePage.fillExtendForm("asd", "sdef");
-        String menu = iframePage.menuNavigation(Menu.BASIC);
+        String menu = iframePage.menuNavigation(PageBase.Menu.BASIC);
 
         assertThat(menu).isEqualTo("Basic");
     }

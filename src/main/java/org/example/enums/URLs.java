@@ -14,9 +14,13 @@ public enum URLs {
     PROGRESSBAR("https://seleniumui.moderntester.pl/progressbar.php"),
     SELECT_MENU("https://seleniumui.moderntester.pl/selectmenu.php"),
     SLIDER("https://seleniumui.moderntester.pl/slider.php"),
-    TOOLTIP("https://seleniumui.moderntester.pl/tooltip.php");
-
-
+    TOOLTIP("https://seleniumui.moderntester.pl/tooltip.php"),
+    DRAGGABLE("https://seleniumui.moderntester.pl/draggable.php"),
+    DROPPABLE("https://seleniumui.moderntester.pl/droppable.php"),
+    RESIZABLE("https://seleniumui.moderntester.pl/resizable.php"),
+    SELECTABLE("https://seleniumui.moderntester.pl/selectable.php"),
+    SORTABLE("https://seleniumui.moderntester.pl/sortable.php"),
+    HIGHSITE("https://seleniumui.moderntester.pl/high-site.php");
 
 
     private final String url;

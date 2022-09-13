@@ -27,9 +27,6 @@ public class DatapickerPage extends PageBase {
     }
 
     public void selectData(int month, int day, int year) {
-//        if (day.matches("^0.")) {
-//            day = day.substring(1);
-//        }
         datepicker.click();
         waitToBeVisible(datepickerBlock);
         String actualMonthYearValue = actualMonthYear.getText();
@@ -50,7 +47,7 @@ public class DatapickerPage extends PageBase {
                     nextButton.click();
                 }
             }
-            actualMonthYearValue = actualMonthYear.getText();;
+            actualMonthYearValue = actualMonthYear.getText();
         }
 
         driver.findElement(By.xpath("//td[@data-month='" + (month-1) + "']/a[text()='" + day + "']")).click();
@@ -66,37 +63,7 @@ public class DatapickerPage extends PageBase {
 
     private int monthToNumber(String month){
           String[] months = new String[]{"january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november"};
-
           return ArrayUtils.indexOf(months, month.toLowerCase());
-
-/*        switch (month.toLowerCase()){
-            case "january":
-                return 0;
-            case "february":
-                return 1;
-            case "march":
-                return 2;
-            case "april":
-                return 3;
-            case "may":
-                return 4;
-            case "june":
-                return 5;
-            case "july":
-                return 6;
-            case "august":
-                return 7;
-            case "september":
-                return 8;
-            case "october":
-                return 9;
-            case "november":
-                return 10;
-            case "december":
-                return 11;
-            default:
-                return -1;
-        }*/
     }
     private String monthToText(int integerMonth) {
         return Month.of(integerMonth).getDisplayName(TextStyle.FULL_STANDALONE, Locale.US);

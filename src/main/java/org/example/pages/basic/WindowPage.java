@@ -1,8 +1,6 @@
 package org.example.pages.basic;
 
-import org.bouncycastle.cms.jcajce.JcaX509CertSelectorConverter;
 import org.example.base.PageBase;
-import org.example.enums.WindowButtons;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -17,7 +15,6 @@ public class WindowPage extends PageBase {
     private WebElement newMessageWindowButton;
     @FindBy(id = "newBrowserTab")
     private WebElement newBrowserTabButton;
-
     @FindBy(tagName = "body")
     private WebElement body;
 
@@ -72,5 +69,11 @@ public class WindowPage extends PageBase {
                 return false;
             }
         }
+    }
+
+    public enum WindowButtons {
+        BROWSER_WINDOW,
+        MESSAGE_WINDOW,
+        BROWSER_TAB
     }
 }

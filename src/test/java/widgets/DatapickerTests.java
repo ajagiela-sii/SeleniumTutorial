@@ -30,23 +30,23 @@ public class DatapickerTests extends TestBase {
         assertThat(datapickerPage.getSelectedDate()).isEqualTo(fullData);
 
         //1st day from next month
-        datapickerPage.selectData(actualMonth + 1, 1, actualYear);
+        datapickerPage.selectData(10, 1, 2022);
         assertThat(datapickerPage.getSelectedDate()).isEqualTo("10/01/2022");
 
         //Last day from January in next year: 31.01.2023
-        datapickerPage.selectData(1, 31, actualYear+1);
+        datapickerPage.selectData(1, 31, 2023);
         assertThat(datapickerPage.getSelectedDate()).isEqualTo("01/31/2023");
 
         //31.01.2023
-        datapickerPage.selectData(1, 31, actualYear+1);
+        datapickerPage.selectData(1, 31, 2023);
         assertThat(datapickerPage.getSelectedDate()).isEqualTo("01/31/2023");
 
         //Random day from previous month
-        datapickerPage.selectData(actualMonth-1, 8, actualYear);
+        datapickerPage.selectData(8, 8, 2022);
         assertThat(datapickerPage.getSelectedDate()).isEqualTo("08/08/2022");
 
         //Random date from last year
-        datapickerPage.selectData(3, 23, actualYear-1);
+        datapickerPage.selectData(3, 23, 2021);
         assertThat(datapickerPage.getSelectedDate()).isEqualTo("03/23/2021");
 
     }

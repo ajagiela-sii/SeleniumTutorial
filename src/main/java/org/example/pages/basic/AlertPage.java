@@ -1,35 +1,27 @@
 package org.example.pages.basic;
 
 import org.example.base.PageBase;
-import org.example.enums.AlertButtons;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class AlertPage extends PageBase {
 
-    @FindBy(id="simple-alert")
+    @FindBy(id = "simple-alert")
     private WebElement simpleAlertButton;
-
-    @FindBy(id="prompt-alert")
+    @FindBy(id = "prompt-alert")
     private WebElement promptAlertButton;
-
-    @FindBy(id="confirm-alert")
+    @FindBy(id = "confirm-alert")
     private WebElement confirmAlertButton;
-
-    @FindBy(id="delayed-alert")
+    @FindBy(id = "delayed-alert")
     private WebElement delayedAlertButton;
-
-    @FindBy(id="simple-alert-label")
+    @FindBy(id = "simple-alert-label")
     private WebElement simpleAlertLabel;
-
-    @FindBy(id="prompt-label")
+    @FindBy(id = "prompt-label")
     private WebElement promptAlertLabel;
-
-    @FindBy(id="confirm-label")
+    @FindBy(id = "confirm-label")
     private WebElement confirmAlertLabel;
-
-    @FindBy(id="delayed-alert-label")
+    @FindBy(id = "delayed-alert-label")
     private WebElement delayedAlertLabel;
 
     public AlertPage(WebDriver driver) {
@@ -41,7 +33,7 @@ public class AlertPage extends PageBase {
             case SIMPLE -> simpleAlertButton.click();
             case PROMPT -> promptAlertButton.click();
             case CONFIRM -> confirmAlertButton.click();
-            case DELAYED-> delayedAlertButton.click();
+            case DELAYED -> delayedAlertButton.click();
         }
     }
 
@@ -65,7 +57,10 @@ public class AlertPage extends PageBase {
         }
     }
 
-
-
-
+    public enum AlertButtons {
+        SIMPLE,
+        PROMPT,
+        CONFIRM,
+        DELAYED
+    }
 }

@@ -11,44 +11,28 @@ public class AccordionPage extends PageBase {
 
     @FindBy(css = "[aria-controls='ui-id-2']")
     private WebElement section1;
-
     @FindBy(id = "ui-id-2")
     private WebElement section1Field;
-
     @FindBy(css = "#ui-id-2 > *")
     private List<WebElement> section1Children;
-
     @FindBy(id = "ui-id-3")
     private WebElement section2;
-
     @FindBy(id = "ui-id-4")
     private WebElement section2Field;
-
     @FindBy(css = "#ui-id-4 > *")
     private List<WebElement> section2Children;
-
     @FindBy(id = "ui-id-5")
     private WebElement section3;
-
     @FindBy(id = "ui-id-6")
     private WebElement section3Field;
-
     @FindBy(css = "#ui-id-6 > *")
     private List<WebElement> section3Children;
-
     @FindBy(id = "ui-id-7")
     private WebElement section4;
-
     @FindBy(id = "ui-id-8")
     private WebElement section4Field;
-
     @FindBy(css = "#ui-id-8 > *")
     private List<WebElement> section4Children;
-    @FindBy(className = "ui-accordion-header")
-    private List<WebElement> sectionHeaders;
-    @FindBy(className = "ui-accordion-content")
-    private List<WebElement> sectionContents;
-
 
     public AccordionPage(WebDriver driver) {
         super(driver);

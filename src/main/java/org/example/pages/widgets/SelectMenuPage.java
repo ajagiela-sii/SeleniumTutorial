@@ -31,7 +31,6 @@ public class SelectMenuPage extends PageBase {
     private WebElement titleBtn;
     @FindBy(css = "#salutation-menu .ui-menu-item")
     private List<WebElement> titleOptions;
-
     @FindBy(css = "#salutation-button .ui-selectmenu-text")
     private WebElement titleLabel;
 
@@ -72,6 +71,4 @@ public class SelectMenuPage extends PageBase {
     public String getTitleValue() {
         return titleLabel.getText();
     }
-
-
 }

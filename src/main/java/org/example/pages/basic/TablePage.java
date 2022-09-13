@@ -4,29 +4,30 @@ import org.example.base.PageBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
 import java.util.List;
-
+import java.util.stream.Collectors;
 
 public class TablePage extends PageBase {
 
     private static Logger logger = LoggerFactory.getLogger(TablePage.class);
-    private By tableRowsCSS = By.cssSelector("tbody tr");
-    private By tableHeaderCSS = By.cssSelector("thead th");
+
+    @FindBy(css = "tbody tr")
+    private List<WebElement> allPeaks;
+    @FindBy(css = "thead th")
+    private List<WebElement> tableHeaders;
 
     public TablePage(WebDriver driver) {
         super(driver);
     }
 
-    public List <WebElement> getAllRowsFromTable() {
-        return driver.findElements(tableRowsCSS);
-    }
-
+//Solution without modification
     public HashMap<String, Integer> getHeaderValues() {
-        List<WebElement> tableHeaders = driver.findElements(tableHeaderCSS);
+
         HashMap<String, Integer> columnNameAndNumber = new HashMap<>();
         if (!tableHeaders.isEmpty()) {
             for (int i = 0; i < tableHeaders.size(); i++) {
@@ -39,9 +40,8 @@ public class TablePage extends PageBase {
     }
 
     public void printRankPeakMountainRange(String state, int higherThan) {
-        List<WebElement> rows = getAllRowsFromTable();
         HashMap<String, Integer> headers = getHeaderValues();
-        rows.stream()
+        allPeaks.stream()
                 .filter(row -> row.findElements(By.cssSelector("tr *")).get(headers.get("State")).getText().contains(state))
                 .filter(row -> Integer.parseInt(row.findElements(By.cssSelector("tr *")).get(headers.get("Height")).getText()) > higherThan)
                 .forEach(row -> System.out.println(row.findElements(By.cssSelector("tr *")).get(headers.get("Rank")).getText()
@@ -50,5 +50,9 @@ public class TablePage extends PageBase {
 
     }
 
+// Solutions after modification
+    public List<RowPage> getAllPeaks() {
+        return allPeaks.stream().map(RowPage::new).collect(Collectors.toList());
+    }
 
 }

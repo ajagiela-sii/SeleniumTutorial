@@ -8,10 +8,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class TestBase {
 
@@ -20,18 +24,24 @@ public class TestBase {
     @BeforeAll
     static void setDriver() {
         WebDriverManager.chromedriver().setup();
-        java.util.logging.Logger.getLogger("org.openqa.selenium").setLevel(Level.OFF);
+        Logger.getLogger("org.openqa.selenium").setLevel(Level.OFF);
         System.setProperty(ChromeDriverService.CHROME_DRIVER_SILENT_OUTPUT_PROPERTY, "true");
-        ChromeOptions options = new ChromeOptions();
-        Map<String, Object> prefs = new HashMap<String, Object>();
-        prefs.put("download.default_directory", "src/main/resources");
-        options.setExperimentalOption("prefs", prefs);
+
     }
 
     @BeforeEach
     void setUp() {
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
+
+        String downloadFilepath = "C:\\work\\downloads";
+        var chromePrefs = new HashMap<String, Object>();
+        chromePrefs.put("profile.default_content_settings.popups", 0);
+        chromePrefs.put("download.default_directory", downloadFilepath);
+        ChromeOptions options = new ChromeOptions();
+        options.setExperimentalOption("prefs", chromePrefs);
+        options.addArguments("start-maximized");
+
+        driver = new ChromeDriver(options);
+
     }
 
     @AfterEach

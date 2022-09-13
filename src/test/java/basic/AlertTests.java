@@ -2,7 +2,6 @@ package basic;
 
 import base.TestBase;
 import org.example.enums.URLs;
-import org.example.enums.AlertButtons;
 import org.example.pages.basic.AlertPage;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -18,23 +17,23 @@ public class AlertTests extends TestBase {
         AlertPage alertPage = new AlertPage(driver);
 
         alertPage.navigateToPage(URLs.ALERTS);
-        alertPage.clickButton(AlertButtons.SIMPLE);
+        alertPage.clickButton(AlertPage.AlertButtons.SIMPLE);
         alertPage.acceptAlert();
 
-        assertThat(alertPage.getButtonLabel(AlertButtons.SIMPLE)).isEqualTo("OK button pressed");
+        assertThat(alertPage.getButtonLabel(AlertPage.AlertButtons.SIMPLE)).isEqualTo("OK button pressed");
     }
 
     @ParameterizedTest
-    @ValueSource(strings={"Lord Vader"})
+    @ValueSource(strings = {"Lord Vader"})
     void shouldSendTextToPromptAlertAndAccept(String name) {
         AlertPage alertPage = new AlertPage(driver);
 
         alertPage.navigateToPage(URLs.ALERTS);
-        alertPage.clickButton(AlertButtons.PROMPT);
+        alertPage.clickButton(AlertPage.AlertButtons.PROMPT);
         alertPage.sendTextToAlert(name);
         alertPage.acceptAlert();
 
-        assertThat(alertPage.getButtonLabel(AlertButtons.PROMPT)).isEqualTo("Hello " + name + "! How are you today?");
+        assertThat(alertPage.getButtonLabel(AlertPage.AlertButtons.PROMPT)).isEqualTo("Hello " + name + "! How are you today?");
     }
 
     @Test
@@ -42,24 +41,24 @@ public class AlertTests extends TestBase {
         AlertPage alertPage = new AlertPage(driver);
 
         alertPage.navigateToPage(URLs.ALERTS);
-        alertPage.clickButton(AlertButtons.CONFIRM);
+        alertPage.clickButton(AlertPage.AlertButtons.CONFIRM);
         alertPage.acceptAlert();
-        assertThat(alertPage.getButtonLabel(AlertButtons.CONFIRM)).isEqualTo("You pressed OK!");
-        alertPage.clickButton(AlertButtons.CONFIRM);
+        assertThat(alertPage.getButtonLabel(AlertPage.AlertButtons.CONFIRM)).isEqualTo("You pressed OK!");
+        alertPage.clickButton(AlertPage.AlertButtons.CONFIRM);
         alertPage.cancelAlert();
 
-        assertThat(alertPage.getButtonLabel(AlertButtons.CONFIRM)).isEqualTo("You pressed Cancel!");
+        assertThat(alertPage.getButtonLabel(AlertPage.AlertButtons.CONFIRM)).isEqualTo("You pressed Cancel!");
     }
 
     @Test
     public void shouldAcceptDelayedAlert() {
-        AlertPage alertPage= new AlertPage(driver);
+        AlertPage alertPage = new AlertPage(driver);
 
         alertPage.navigateToPage(URLs.ALERTS);
-        alertPage.clickButton(AlertButtons.DELAYED);
+        alertPage.clickButton(AlertPage.AlertButtons.DELAYED);
         alertPage.waitForAlert();
         alertPage.acceptAlert();
 
-        assertThat(alertPage.getButtonLabel(AlertButtons.DELAYED)).isEqualTo("OK button pressed");
+        assertThat(alertPage.getButtonLabel(AlertPage.AlertButtons.DELAYED)).isEqualTo("OK button pressed");
     }
 }
