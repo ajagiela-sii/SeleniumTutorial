@@ -8,12 +8,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.remote.CapabilityType;
-import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.util.HashMap;
-import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -26,7 +22,6 @@ public class TestBase {
         WebDriverManager.chromedriver().setup();
         Logger.getLogger("org.openqa.selenium").setLevel(Level.OFF);
         System.setProperty(ChromeDriverService.CHROME_DRIVER_SILENT_OUTPUT_PROPERTY, "true");
-
     }
 
     @BeforeEach
@@ -41,7 +36,6 @@ public class TestBase {
         options.addArguments("start-maximized");
 
         driver = new ChromeDriver(options);
-
     }
 
     @AfterEach
